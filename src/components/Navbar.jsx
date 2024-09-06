@@ -2,7 +2,15 @@ import React from 'react'
 import './Navabar.css'
 import NavBarLinks from './NavBarLinks'
 const Navbar = () => {
+
+    let numero= 10;
+    function somma(x){
+        return x+x
+    }
   return (
+    <>
+    <div style={{color:numero > 9?"red":"blue"}}>{somma(numero)}</div>
+    <div>{numero > 9? "sono maggiore di 10": "non sono maggiore di 10"}</div>
     <ul>
         <li><NavBarLinks></NavBarLinks></li>
         <li><NavBarLinks></NavBarLinks></li>
@@ -14,6 +22,7 @@ const Navbar = () => {
      QUESTO DEVE VALERE PER TUTTI GLI ELEMENTI, se no mi fa vedere solamente quelli che hanno un children.
      Funziona tipo PROPS*/}
     </ul>
+    </>
   )
 }
 
