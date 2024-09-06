@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  /* reattività: creo le variabili e li suo metodo. dopo di che se la voglio chiamare al click la chiamo in altro modo,
+  e dentro la funzione chiamo la setCount */
   const [count, setCount] = useState(0)
   function funzione() {
     setCount(count + 1)
