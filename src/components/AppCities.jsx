@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../components/AppCities.scss";
 import { Cities } from "../api/index.js";
+import { InputText } from 'primereact/inputtext';
+        
+        
+
 const AppCites = () => {
 
   const [AllCities, setAllCities] = useState([]); //ref dove salvo result api città
@@ -11,7 +15,7 @@ const AppCites = () => {
 
 
   let inputHandler = (e) => {
-    var lowerCase = e.target.value.toLowerCase();
+    let lowerCase = e.target.value.toLowerCase();
     setCityName(lowerCase);
   };
 
@@ -34,22 +38,24 @@ const AppCites = () => {
 
   return (
     <>
-    <div className="app__cities__container">
-
-    </div>
-      <input
-        type="text"
+    <div className="app__cities flex flex-col gap-7">
+    <InputText
+       className="border"
         onChange={inputHandler} 
-        value={cityName}
-      />
-      <ul>
+        value={cityName}>
+      </InputText>
+     
+      <div className="app__cities__container flex flex-wrap gap-5 justify-center">
         { filteredCities.length >0 ?
         filteredCities.map((item, index) => (
-          <li key={index} className="text">{item.name.common}</li>
-        )) : <li>Nessun Risultato</li>}
-
-       
-      </ul>
+          <div key={index} className="app__cities__container-card p-3 border rounded-md">
+            
+            <div>{item.name.common}</div></div>
+        )) : "Nessun Risultato"}
+      </div>
+    </div>
+    
+     
       
     </>
   );
