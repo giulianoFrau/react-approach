@@ -8,7 +8,7 @@ const AppCites = () => {
 
   const [cityName, setCityName] = useState(""); //ref per input
 
-  const [filteredCities, setFilteredCities] = useState([]); //ref dove salvo i risultati filtrati
+ 
 
   async function getCities() {
     const resp = await Cities.getCities();
@@ -21,6 +21,22 @@ const AppCites = () => {
     getCities();
   }, []);
 
+  const filteredCities = useMemo(() => {
+    return  AllCities.filter((city) =>
+      city.name.common.toLowerCase().includes(cityName.toLowerCase())
+    );
+  }) 
+
+  /*
+   ALTERNATIVA A USEMEMO DI SU.. USEMEMO EQUIVALE A COMPUTED IN VUE.
+  se volessi usare useEffect anche per vedere i cambiamenti stile watch devo fare cosi:
+
+
+Aggiungi alle variabili:
+const [filteredCities, setFilteredCities] = useState([]); //ref dove salvo i risultati filtrati
+
+Aggiungi useEffect:
+
   useEffect(() => {
     const filtered = AllCities.filter((city) =>
       city.name.common.toLowerCase().includes(cityName.toLowerCase())
@@ -28,17 +44,8 @@ const AppCites = () => {
     setFilteredCities(filtered);
   }, [AllCities, cityName]);
 
-
-   /* ALTERNATIVA A USE EFFECT DI SU.. USEMEMO EQUIVALE A COMPUTED IN VUE.
-   DI CONSEGUENZA NON SERVE USARE const [filteredCities, setFilteredCities] = useState([]);
-   e stampo direttamente filteredCities
-
-   
-   const filteredCities = useMemo(() => {
-    return  AllCities.filter((city) =>
-      city.name.common.toLowerCase().includes(cityName.toLowerCase())
-    );
-  }) */
+  */
+  
 
   return (
     <>
