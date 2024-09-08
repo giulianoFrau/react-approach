@@ -10,11 +10,6 @@ const AppCites = () => {
 
   const [filteredCities, setFilteredCities] = useState([]); //ref dove salvo i risultati filtrati
 
-  let inputHandler = (e) => {
-    let lowerCase = e.target.value.toLowerCase();
-    setCityName(lowerCase);
-  };
-
   async function getCities() {
     const resp = await Cities.getCities();
     setAllCities(
@@ -38,7 +33,7 @@ const AppCites = () => {
       <div className="app__cities flex flex-col gap-7">
         <InputText
           className="border text-indigo-500 p-2"
-          onChange={inputHandler}
+          onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         ></InputText>
 
