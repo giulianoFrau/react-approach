@@ -36,6 +36,18 @@ const AppCites = () => {
     setFilteredCities(filtered);
   }, [AllCities, cityName]);
 
+
+   /* ALTERNATIVA A USE EFFECT DI SU.. USEMEMO EQUIVALE A COMPUTED IN VUE.
+   DI CONSEGUENZA NON SERVE USARE const [filteredCities, setFilteredCities] = useState([]);
+   e stampo direttamente filteredCities
+
+   
+   const filteredCities = useMemo(() => {
+    return  AllCities.filter((city) =>
+      city.name.common.toLowerCase().includes(cityName.toLowerCase())
+    );
+  }) */
+
   return (
     <>
     <div className="app__cities flex flex-col gap-7">
