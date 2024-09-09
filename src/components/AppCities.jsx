@@ -1,14 +1,13 @@
-import { useEffect, useState,useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import "../components/AppCities.scss";
 import { Cities } from "../api/index.js";
 import { InputText } from "primereact/inputtext";
+import CityForm from "./CityForm.jsx";
 
 const AppCites = () => {
   const [AllCities, setAllCities] = useState([]); //ref dove salvo result api città
 
   const [cityName, setCityName] = useState(""); //ref per input
-
- 
 
   async function getCities() {
     const resp = await Cities.getCities();
@@ -17,15 +16,23 @@ const AppCites = () => {
     );
   }
 
+  function addCity(city) {
+    setAllCities(
+      [...AllCities, city].sort((a, b) =>
+        a.name.common > b.name.common ? 1 : -1
+      )
+    );
+  }
+
   useEffect(() => {
     getCities();
   }, []);
 
   const filteredCities = useMemo(() => {
-    return  AllCities.filter((city) =>
+    return AllCities.filter((city) =>
       city.name.common.toLowerCase().includes(cityName.toLowerCase())
     );
-  }) 
+  });
 
   /*
    ALTERNATIVA A USEMEMO DI SU.. USEMEMO EQUIVALE A COMPUTED IN VUE.
@@ -45,10 +52,10 @@ Aggiungi useEffect:
   }, [AllCities, cityName]);
 
   */
-  
 
   return (
     <>
+      <CityForm addCity={addCity}></CityForm>
       <div className="app__cities flex flex-col gap-7">
         <InputText
           className="border text-indigo-500 p-2"
