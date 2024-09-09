@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="grid grid-cols-4 gap-5">
       {cities
-        // .filter((city) => !city.isVisited) //se voglio filtriparticolari, va aggiunto prima di map
+        // .filter((city) => !city.isVisited) //se voglio filtri particolari, va aggiunto prima di map se no lo faccio su :let filteredCitys = cities.filter((city) => !city.isVisited);
         .map((city, i) => (
           <Cards
             key={i}
