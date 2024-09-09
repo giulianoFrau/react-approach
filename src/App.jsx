@@ -96,14 +96,14 @@ function App() {
           <label>Username</label>
           <input
             type="text"
-            name="username" // Aggiungi l'attributo name
+            name="username"
             onChange={handleChange}
             value={formData.username}
           />
           <label>Password</label>
           <input
             type="password"
-            name="password" // Aggiungi l'attributo name
+            name="password"
             onChange={handleChange}
             value={formData.password}
           />
