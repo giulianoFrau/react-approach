@@ -47,8 +47,24 @@ function App() {
     username: "",
     password: "",
   });
+
+  const [person, setPerson] = useState({
+    nome: "Giuli",
+    cognome: "1234",
+  });
+
   const [city, setCity] = useState("");
 
+  const [items, setItems] = useState([1, 2, 3, 4, 5]);
+
+  function doubleArray() {
+    setItems(items.map((item) => item * 2));
+  }
+
+  function changeName() {
+    const updateName = { ...person, nome: "Gessi" };
+    setPerson(updateName);
+  }
   function somma(num) {
     console.log(num + 5);
   }
@@ -89,6 +105,13 @@ function App() {
         <button onClick={() => setCount(count + 1)}>
           Hai cliccato {count}
         </button>
+        {/* use state al click modifica elementi array duplicandoli */}
+        <button onClick={doubleArray}>Duplica array {items}</button>
+
+        <hr />
+        {/* use state al click modifica elementi oggetti duplicandoli */}
+        <button onClick={changeName}>cambia nome oggetto {person.nome}</button>
+
         <hr />
         {/* Funzione anonima al click passando parametro */}
         <button onClick={() => somma(5)}>clicca</button>
