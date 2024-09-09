@@ -3,6 +3,7 @@ import "../components/AppCities.scss";
 import { Cities } from "../api/index.js";
 import { InputText } from "primereact/inputtext";
 import CityForm from "./CityForm.jsx";
+import CityCard from "./CityCard.jsx";
 
 const AppCites = () => {
   const [AllCities, setAllCities] = useState([]); //ref dove salvo result api città
@@ -66,12 +67,7 @@ Aggiungi useEffect:
         <div className="app__cities__container flex flex-wrap gap-5 justify-center">
           {filteredCities.length > 0
             ? filteredCities.map((item, index) => (
-                <div
-                  key={index}
-                  className="app__cities__container-card p-3 border rounded-md"
-                >
-                  <div>{item.name.common}</div>
-                </div>
+                <CityCard key={index} cityName={item.name.common}></CityCard>
               ))
             : "Nessun Risultato"}
         </div>
