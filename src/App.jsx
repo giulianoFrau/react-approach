@@ -4,6 +4,7 @@ import "./App.css";
 import CardForm from "./components/CardForm";
 
 function App() {
+  /* FORM AGGIUNTA CARD */
   const [cities, setCities] = useState([
     {
       title: "Roma",
@@ -42,6 +43,12 @@ function App() {
     },
   ]);
 
+  const aggiungiCitta = (newCity) => {
+    setCities([...cities, newCity]);
+  };
+
+  /***************** ALTRI ESEMPI *********************** */
+
   const [count, setCount] = useState(0);
 
   const [person, setPerson] = useState({
@@ -49,9 +56,6 @@ function App() {
     cognome: "1234",
   });
   /* questa la mandiamo al componente figlio, come props */
-  const aggiungiCitta = (newCity) => {
-    setCities([...cities, newCity]);
-  };
 
   const [city, setCity] = useState("");
 
