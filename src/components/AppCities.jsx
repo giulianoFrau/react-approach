@@ -1,9 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
 import "../components/AppCities.scss";
 import { Cities } from "../api/index.js";
-import { InputText } from "primereact/inputtext";
 import CityForm from "./CityForm.jsx";
 import CityCard from "./CityCard.jsx";
+import CitySearch from "./CitySearch.jsx";
 
 const AppCites = () => {
   const [AllCities, setAllCities] = useState([]); //ref dove salvo result api città
@@ -25,15 +25,15 @@ const AppCites = () => {
     );
   }
 
-  useEffect(() => {
-    getCities();
-  }, []);
-
   const filteredCities = useMemo(() => {
     return AllCities.filter((city) =>
       city.name.common.toLowerCase().includes(cityName.toLowerCase())
     );
-  });
+  }, [AllCities, cityName]);
+
+  useEffect(() => {
+    getCities();
+  }, []);
 
   /*
    ALTERNATIVA A USEMEMO DI SU.. USEMEMO EQUIVALE A COMPUTED IN VUE.
@@ -57,13 +57,8 @@ Aggiungi useEffect:
   return (
     <>
       <CityForm addCity={addCity}></CityForm>
+      <CitySearch cityName={cityName} setCityName={setCityName} />
       <div className="app__cities flex flex-col gap-7">
-        <InputText
-          className="border text-indigo-500 p-2"
-          onChange={(e) => setCityName(e.target.value)}
-          value={cityName}
-        ></InputText>
-
         <div className="app__cities__container flex flex-wrap gap-5 justify-center">
           {filteredCities.length > 0
             ? filteredCities.map((item, index) => (

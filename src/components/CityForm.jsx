@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { InputText } from "primereact/inputtext";
 const CityForm = ({ addCity }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -21,12 +21,13 @@ const CityForm = ({ addCity }) => {
   return (
     <form
       onSubmit={submitForm}
-      className="flex flex-col p-3 gap-2 w-80 bg-zinc-950 mb-5 mx-auto"
+      className="flex flex-col p-3 gap-2 w-80 bg-zinc-950 mb-5 mx-auto rounded-lg"
     >
       <label>Aggiungi stato</label>
-      <input
-        type="text"
+      <InputText
         name="title"
+        className="border text-indigo-500 p-2"
+        placeholder="Inserisci il nome dello stato"
         onChange={handleChange}
         value={formData.title}
       />
