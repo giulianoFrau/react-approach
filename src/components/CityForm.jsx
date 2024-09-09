@@ -22,8 +22,9 @@ const CityForm = ({ addCity }) => {
     toast.current.show({
       severity: "success",
       summary: "Ottimo lavoro!",
-      detail: "Stato inserito correttamente",
-      life: 20000000,
+      detail: "Stato aggiunto correttamente",
+      life: 2000,
+      closable: false,
     });
 
     setFormData({ title: "" });

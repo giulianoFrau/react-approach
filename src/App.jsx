@@ -1,13 +1,8 @@
+import AppCities from "./components/AppCities";
+import "./App.css";
 
-import AppCities from './components/AppCities'
-import './App.css'
-
-        
 function App() {
-
-  return (
- <AppCities />
-  )
+  return <AppCities />;
 }
 
-export default App
+export default App;

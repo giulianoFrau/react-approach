@@ -56,13 +56,14 @@ Aggiungi useEffect:
 
   return (
     <>
-      <div className="flex gap-10">
+      <div className="flex gap-10 flex-wrap">
         <CitySearch
           cityName={cityName}
           setCityName={setCityName}
           totalResult={filteredCities.length}
         />
-        <div className="border"></div>
+        <div className="hidden md:block md:border"></div>
+
         <CityForm addCity={addCity}></CityForm>
       </div>
 
