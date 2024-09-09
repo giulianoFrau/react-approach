@@ -3,7 +3,7 @@ import { InputText } from "primereact/inputtext";
 const CitySearch = ({ cityName, setCityName, totalResult }) => {
   return (
     <>
-      <div className="flex flex-col p-3 gap-2 w-80 bg-zinc-950 mb-5 mx-auto rounded-lg">
+      <div className="flex flex-col p-3 gap-2 w-80 bg-zinc-950  flex-1 rounded-lg">
         <h3>Ricerca uno stato</h3>
         <InputText
           className="border text-indigo-500 p-2"
