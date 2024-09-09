@@ -42,49 +42,71 @@ function App() {
     },
   ];
 
-  const [userName, setUserName] = useState("");
+  // Stato con un oggetto per username e password
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
 
   function somma(num) {
     console.log(num + 5);
   }
 
-  function handlechange(e) {
-    setUserName(e.target.value);
+  // Funzione per gestire i cambiamenti nei campi del form
+  function handleChange(e) {
+    const { name, value } = e.target; // con name prendiamo l'attributo name del tag input
+    setFormData((prevData) => ({
+      ...prevData, // per evitare di sovrascrivere i valori vecchi dell'oggetto formData
+      [name]: value, // per aggiornare il valore del campo sarà username:" bla bla bla"
+    }));
   }
 
   function submitForm(e) {
     e.preventDefault();
-    alert("username: " + userName);
+    alert(
+      "Username: " + formData.username + "\nPassword: " + formData.password
+    );
   }
 
   return (
     <>
       <div className="grid grid-cols-4 gap-5">
-        {cities
-          // .filter((city) => !city.isVisited) //se voglio filtri particolari, va aggiunto prima di map se no lo faccio su :let filteredCitys = cities.filter((city) => !city.isVisited);
-          .map((city, i) => (
-            <Cards
-              key={i}
-              title={city.title}
-              imgUrl={city.imgUrl}
-              isVisited={city.isVisited}
-            >
-              {city.description}
-            </Cards>
-          ))}
+        {cities.map((city, i) => (
+          <Cards
+            key={i}
+            title={city.title}
+            imgUrl={city.imgUrl}
+            isVisited={city.isVisited}
+          >
+            {city.description}
+          </Cards>
+        ))}
       </div>
+
       <div className="card flex flex-col gap-2">
         <button onClick={() => setCount(count + 1)}>
           Hai cliccato {count}
         </button>
         <hr />
-        {/* passando un parametro */}
         <button onClick={() => somma(5)}>clicca</button>
         <hr />
-        {/* form Dati */}
-        <form onSubmit={submitForm} className="flex flex-col  p-3 gap-2">
-          <label>username</label>
-          <input type="text" onChange={handlechange} value={userName} />
+
+        {/* Form Dati */}
+        <form onSubmit={submitForm} className="flex flex-col p-3 gap-2">
+          <label>Username</label>
+          <input
+            type="text"
+            name="username" // Aggiungi l'attributo name
+            onChange={handleChange}
+            value={formData.username}
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password" // Aggiungi l'attributo name
+            onChange={handleChange}
+            value={formData.password}
+          />
           <button type="submit">Invia</button>
         </form>
       </div>
