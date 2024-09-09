@@ -1,6 +1,6 @@
 import { InputText } from "primereact/inputtext";
 
-const CitySearch = ({ cityName, setCityName }) => {
+const CitySearch = ({ cityName, setCityName, totalResult }) => {
   return (
     <>
       <div className="flex flex-col p-3 gap-2 w-80 bg-zinc-950 mb-5 mx-auto rounded-lg">
@@ -11,6 +11,12 @@ const CitySearch = ({ cityName, setCityName }) => {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         ></InputText>
+
+        <small className="text-red-500 text-left">
+          {cityName.length > 0 && totalResult !== 0
+            ? `*Risultati trovati : ${totalResult}`
+            : ""}
+        </small>
       </div>
     </>
   );

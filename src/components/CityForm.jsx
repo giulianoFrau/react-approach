@@ -31,6 +31,9 @@ const CityForm = ({ addCity }) => {
         onChange={handleChange}
         value={formData.title}
       />
+      <small className="text-left text-red-500">
+        *Inserisci la prima lettera maiuscola
+      </small>
 
       <button type="submit">Invia</button>
     </form>
