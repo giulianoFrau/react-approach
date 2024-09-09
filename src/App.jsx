@@ -33,25 +33,27 @@ const cities = [
     title: "Cagliari",
     isVisited: true,
     imgUrl:
-      "4https://media.istockphoto.com/id/528438369/it/foto/cagliari-italia-paesaggio-urbano.jpg?s=1024x1024&w=is&k=20&c=hvLNnBtUJsBE3Wr0OpAaOkEdotnMekOPiiUld0czI5s=",
+      "https://media.istockphoto.com/id/528438369/it/foto/cagliari-italia-paesaggio-urbano.jpg?s=1024x1024&w=is&k=20&c=hvLNnBtUJsBE3Wr0OpAaOkEdotnMekOPiiUld0czI5s=",
     description:
-      " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam tempore in, quo consequatur voluptatum error necessitatibus, harum numquam tenetur omnis odio. Error ea earum voluptate praesentium.",
+      " 4Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam tempore in, quo consequatur voluptatum error necessitatibus, harum numquam tenetur omnis odio. Error ea earum voluptate praesentium.",
   },
 ];
 
 function App() {
   return (
     <div className="grid grid-cols-4 gap-5">
-      {cities.map((city, i) => (
-        <Cards
-          key={i}
-          title={city.title}
-          imgUrl={city.imgUrl}
-          isVisited={city.isVisited}
-        >
-          {city.description}
-        </Cards>
-      ))}
+      {cities
+        // .filter((city) => !city.isVisited) //se voglio filtriparticolari, va aggiunto prima di map
+        .map((city, i) => (
+          <Cards
+            key={i}
+            title={city.title}
+            imgUrl={city.imgUrl}
+            isVisited={city.isVisited}
+          >
+            {city.description}
+          </Cards>
+        ))}
     </div>
   );
 }
