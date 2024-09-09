@@ -44,6 +44,7 @@ const CityForm = ({ addCity }) => {
           className="border text-indigo-500 p-2"
           placeholder="Inserisci il nome dello stato"
           onChange={handleChange}
+          // ALTERNATIVA : onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           value={formData.title}
         />
         <small className="text-left text-red-500">
