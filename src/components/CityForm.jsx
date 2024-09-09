@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
+import { Button } from "primereact/button";
 
 const CityForm = ({ addCity }) => {
   const [formData, setFormData] = useState({
@@ -48,8 +49,7 @@ const CityForm = ({ addCity }) => {
         <small className="text-left text-red-500">
           *Inserisci la prima lettera maiuscola
         </small>
-
-        <button type="submit">Invia</button>
+        <Button label="Invia " />
       </form>
     </>
   );

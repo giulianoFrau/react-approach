@@ -6,7 +6,7 @@ import CityCard from "./CityCard.jsx";
 import CitySearch from "./CitySearch.jsx";
 
 const AppCites = () => {
-  const [AllCities, setAllCities] = useState([]); //ref dove salvo result api città
+  const [allCities, setAllCities] = useState([]); //ref dove salvo result api città
 
   const [cityName, setCityName] = useState(""); //ref per input
 
@@ -19,17 +19,22 @@ const AppCites = () => {
 
   function addCity(city) {
     setAllCities(
-      [...AllCities, city].sort((a, b) =>
+      [...allCities, city].sort((a, b) =>
         a.name.common > b.name.common ? 1 : -1
       )
     );
   }
+  function deleteCity(city) {
+    setAllCities(
+      allCities.filter((currentCity) => currentCity.name.common !== city)
+    );
+  }
 
   const filteredCities = useMemo(() => {
-    return AllCities.filter((city) =>
+    return allCities.filter((city) =>
       city.name.common.toLowerCase().includes(cityName.toLowerCase())
     );
-  }, [AllCities, cityName]);
+  }, [allCities, cityName]);
 
   useEffect(() => {
     getCities();
@@ -46,11 +51,11 @@ const [filteredCities, setFilteredCities] = useState([]); //ref dove salvo i ris
 Aggiungi useEffect:
 
   useEffect(() => {
-    const filtered = AllCities.filter((city) =>
+    const filtered = allCities.filter((city) =>
       city.name.common.toLowerCase().includes(cityName.toLowerCase())
     );
     setFilteredCities(filtered);
-  }, [AllCities, cityName]);
+  }, [allCities, cityName]);
 
   */
 
@@ -71,7 +76,11 @@ Aggiungi useEffect:
         <div className="app__cities__container flex flex-wrap gap-5 justify-center">
           {filteredCities.length > 0
             ? filteredCities.map((item, index) => (
-                <CityCard key={index} cityName={item.name.common}></CityCard>
+                <CityCard
+                  key={index}
+                  cityName={item.name.common}
+                  deleteCity={deleteCity}
+                ></CityCard>
               ))
             : "Nessun Risultato"}
         </div>
