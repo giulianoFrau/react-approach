@@ -41,6 +41,22 @@ function App() {
         " 4Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam tempore in, quo consequatur voluptatum error necessitatibus, harum numquam tenetur omnis odio. Error ea earum voluptate praesentium.",
     },
   ];
+
+  const [userName, setUserName] = useState("");
+
+  function somma(num) {
+    console.log(num + 5);
+  }
+
+  function handlechange(e) {
+    setUserName(e.target.value);
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    alert("username: " + userName);
+  }
+
   return (
     <>
       <div className="grid grid-cols-4 gap-5">
@@ -57,10 +73,20 @@ function App() {
             </Cards>
           ))}
       </div>
-      <div className="card">
+      <div className="card flex flex-col gap-2">
         <button onClick={() => setCount(count + 1)}>
           Hai cliccato {count}
         </button>
+        <hr />
+        {/* passando un parametro */}
+        <button onClick={() => somma(5)}>clicca</button>
+        <hr />
+        {/* form Dati */}
+        <form onSubmit={submitForm} className="flex flex-col  p-3 gap-2">
+          <label>username</label>
+          <input type="text" onChange={handlechange} value={userName} />
+          <button type="submit">Invia</button>
+        </form>
       </div>
     </>
   );
