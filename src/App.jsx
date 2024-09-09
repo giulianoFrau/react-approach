@@ -3,7 +3,6 @@ import Cards from "./components/Cards";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
   const cities = [
     {
       title: "Roma",
@@ -42,11 +41,13 @@ function App() {
     },
   ];
 
+  const [count, setCount] = useState(0);
   // Stato con un oggetto per username e password
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+  const [city, setCity] = useState("");
 
   function somma(num) {
     console.log(num + 5);
@@ -84,14 +85,23 @@ function App() {
       </div>
 
       <div className="card flex flex-col gap-2">
+        {/* Funzione anonima al click */}
         <button onClick={() => setCount(count + 1)}>
           Hai cliccato {count}
         </button>
         <hr />
+        {/* Funzione anonima al click passando parametro */}
         <button onClick={() => somma(5)}>clicca</button>
         <hr />
-
-        {/* Form Dati */}
+        {/* Input utilizzando useState su un singolo valore */}
+        <input
+          type="text"
+          onChange={(e) => setCity(e.target.value)}
+          value={city}
+        />
+        <span>{city}</span>
+        <hr />
+        {/* Form Dati utilizati con useState su oggetti */}
         <form onSubmit={submitForm} className="flex flex-col p-3 gap-2">
           <label>Username</label>
           <input
