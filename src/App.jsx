@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Cards from "./components/Cards";
 import "./App.css";
+import CardForm from "./components/CardForm";
 
 function App() {
-  const cities = [
+  const [cities, setCities] = useState([
     {
       title: "Roma",
       isVisited: true,
@@ -39,19 +40,18 @@ function App() {
       description:
         " 4Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam tempore in, quo consequatur voluptatum error necessitatibus, harum numquam tenetur omnis odio. Error ea earum voluptate praesentium.",
     },
-  ];
+  ]);
 
   const [count, setCount] = useState(0);
-  // Stato con un oggetto per username e password
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
 
   const [person, setPerson] = useState({
     nome: "Giuli",
     cognome: "1234",
   });
+  /* questa la mandiamo al componente figlio, come props */
+  const aggiungiCitta = (newCity) => {
+    setCities([...cities, newCity]);
+  };
 
   const [city, setCity] = useState("");
 
@@ -69,24 +69,9 @@ function App() {
     console.log(num + 5);
   }
 
-  // Funzione per gestire i cambiamenti nei campi del form
-  function handleChange(e) {
-    const { name, value } = e.target; // con name prendiamo l'attributo name del tag input
-    setFormData((prevData) => ({
-      ...prevData, // per evitare di sovrascrivere i valori vecchi dell'oggetto formData
-      [name]: value, // per aggiornare il valore del campo sarà username:" bla bla bla"
-    }));
-  }
-
-  function submitForm(e) {
-    e.preventDefault();
-    alert(
-      "Username: " + formData.username + "\nPassword: " + formData.password
-    );
-  }
-
   return (
     <>
+      <CardForm addCity={aggiungiCitta} />
       <div className="grid grid-cols-4 gap-5">
         {cities.map((city, i) => (
           <Cards
@@ -124,24 +109,6 @@ function App() {
         />
         <span>{city}</span>
         <hr />
-        {/* Form Dati utilizati con useState su oggetti */}
-        <form onSubmit={submitForm} className="flex flex-col p-3 gap-2">
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            onChange={handleChange}
-            value={formData.username}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            value={formData.password}
-          />
-          <button type="submit">Invia</button>
-        </form>
       </div>
     </>
   );
