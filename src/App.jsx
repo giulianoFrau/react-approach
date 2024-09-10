@@ -52,6 +52,13 @@ function App() {
   return (
     <>
       <CardForm addCity={aggiungiCitta} />
+      <div className="card flex flex-col gap-2">
+        <div>Conteggio : {count}</div>
+        <div className="card flex flex gap-2">
+          <button onClick={() => setCount(count + 1)}>Incrementa</button>
+          <button onClick={() => setCount(count - 1)}>Decrementa</button>
+        </div>
+      </div>
       <div className="grid grid-cols-4 gap-5 mb-5">
         {cities.map((city, i) => (
           <Cards
@@ -63,13 +70,6 @@ function App() {
             {city.description}
           </Cards>
         ))}
-      </div>
-
-      <div className="card flex flex-col gap-2">
-        {/* Funzione anonima al click */}
-        <button onClick={() => setCount(count + 1)}>
-          Hai cliccato {count}
-        </button>
       </div>
     </>
   );
