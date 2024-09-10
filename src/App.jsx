@@ -3,6 +3,7 @@ import Cards from "./components/Cards";
 import "./App.css";
 import CardForm from "./components/CardForm";
 import Example from "./components/Example";
+import { ProvaContext } from "./stores/ProvaContext";
 
 function App() {
   /* ****************** FORM AGGIUNTA CARD *********************************/
@@ -121,7 +122,7 @@ function App() {
   }
 
   return (
-    <>
+    <ProvaContext.Provider value={{ count, setCount }}>
       <CardForm addCity={aggiungiCitta} />
       <div className="grid grid-cols-4 gap-5 mb-5">
         {cities.map((city, i) => (
@@ -189,7 +190,7 @@ function App() {
         <span>{city}</span>
         <hr />
       </div>
-    </>
+    </ProvaContext.Provider>
   );
 }
 
