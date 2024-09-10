@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Cards from "./components/Cards";
 import "./App.css";
 import CardForm from "./components/CardForm";
@@ -48,9 +48,55 @@ function App() {
     setCities([...cities, newCity]);
   };
 
-  /***************** ALTRI ESEMPI *********************** */
-
   const [count, setCount] = useState(0);
+
+  /* FORM USANDO useReducer */
+  const [formData, dispatchFormData] = useReducer(formReducer, {
+    name: "",
+    email: "",
+  });
+  function handleFieldChange(field, value) {
+    dispatchFormData({ type: "CHANGE_FIELD", field, value });
+  }
+  function resetForm(e) {
+    e.preventDefault();
+    dispatchFormData({ type: "RESET_FORM" });
+  }
+
+  function scriviValori(e) {
+    e.preventDefault();
+    dispatchFormData({ type: "SCRIVI_GIULIANO" });
+  }
+
+  function sendForm(e) {
+    e.preventDefault();
+    console.log(formData);
+    resetForm(e);
+  }
+
+  function formReducer(state, action) {
+    switch (action.type) {
+      case "CHANGE_FIELD":
+        return {
+          ...state,
+          [action.field]: action.value,
+        };
+      case "RESET_FORM":
+        return {
+          name: "",
+          email: "",
+        };
+      case "SCRIVI_GIULIANO":
+        return {
+          email: "a@a.com",
+          name: "giuliano",
+        };
+      default:
+        return state;
+    }
+  }
+
+  /***************** ALTRI ESEMPI *********************** */
 
   const [person, setPerson] = useState({
     nome: "Giuli",
@@ -89,6 +135,33 @@ function App() {
           </Cards>
         ))}
       </div>
+      <div className="flex flex-col p-2 border my-5">
+        <h1>Use Reducer</h1>
+        <form className="flex flex-col gap-2">
+          <div>
+            <label htmlFor="name">name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={(e) => handleFieldChange("name", e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={(e) => handleFieldChange("email", e.target.value)}
+            />
+          </div>
+          <button onClick={resetForm}>Reset</button>
+          <button onClick={sendForm}>Invia</button>
+          <button onClick={scriviValori}>Scrivi valori</button>
+        </form>
+      </div>
+
       <Example />
 
       <div className="card flex flex-col gap-2">
