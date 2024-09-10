@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cards from "./components/Cards";
 import "./App.css";
 import CardForm from "./components/CardForm";
+import Example from "./components/Example";
 
 function App() {
   /* FORM AGGIUNTA CARD */
@@ -76,7 +77,7 @@ function App() {
   return (
     <>
       <CardForm addCity={aggiungiCitta} />
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-4 gap-5 mb-5">
         {cities.map((city, i) => (
           <Cards
             key={i}
@@ -88,6 +89,7 @@ function App() {
           </Cards>
         ))}
       </div>
+      <Example />
 
       <div className="card flex flex-col gap-2">
         {/* Funzione anonima al click */}
