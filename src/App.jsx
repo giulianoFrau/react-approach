@@ -5,7 +5,7 @@ import CardForm from "./components/CardForm";
 import Example from "./components/Example";
 
 function App() {
-  /* FORM AGGIUNTA CARD */
+  /* ****************** FORM AGGIUNTA CARD *********************************/
   const [cities, setCities] = useState([
     {
       title: "Roma",
@@ -50,7 +50,7 @@ function App() {
 
   const [count, setCount] = useState(0);
 
-  /* FORM USANDO useReducer */
+  /* *********** FORM USANDO useReducer *************************************** */
   const [formData, dispatchFormData] = useReducer(formReducer, {
     name: "",
     email: "",
