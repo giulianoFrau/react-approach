@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Dialog } from "primereact/dialog";
-import { useSelector } from "react-redux";
+
+import PreferCities from "./PreferCities";
 
 const CitySearch = ({ cityName, setCityName, totalResult }) => {
   const [visible, setVisible] = useState(false);
-  const preferCities = useSelector((state) => state.cities.preferCities);
+
   return (
     <>
       <div className="flex flex-col p-3 gap-2 w-80 bg-zinc-950  flex-1 rounded-lg">
@@ -28,7 +29,7 @@ const CitySearch = ({ cityName, setCityName, totalResult }) => {
         </u>
       </div>
       <Dialog
-        header="Header"
+        header="Le tue citta preferite"
         modal
         closable={false}
         visible={visible}
@@ -39,13 +40,7 @@ const CitySearch = ({ cityName, setCityName, totalResult }) => {
           setVisible(false);
         }}
       >
-        <div>
-          {preferCities.map((city, i) => (
-            <div key={i}>
-              <div>{city}</div>
-            </div>
-          ))}
-        </div>
+        <PreferCities />
       </Dialog>
     </>
   );
