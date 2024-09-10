@@ -44,7 +44,6 @@ export const citiesSlice = createSlice({
   reducers: {
     add: (state, action) => {
       state.value.push(action.payload);
-      // Salva lo stato aggiornato nel sessionStorage
       sessionStorage.setItem("citiesState", JSON.stringify(state));
     },
   },
