@@ -11,7 +11,7 @@ const Example = () => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []); /* se vuoto viene chiamato quando monti il componente, se aggiungi dipendenze agisce come watch di vue*/
 
   return (
     <div className="flex flex-wrap mx-auto gap-5 ">
