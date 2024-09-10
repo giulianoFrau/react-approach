@@ -65,6 +65,7 @@ Aggiungi useEffect:
         <CitySearch
           cityName={cityName}
           setCityName={setCityName}
+          allCities={filteredCities}
           totalResult={filteredCities.length}
         />
         <div className="hidden md:block md:border"></div>

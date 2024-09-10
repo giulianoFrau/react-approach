@@ -4,7 +4,7 @@ import { Dialog } from "primereact/dialog";
 
 import PreferCities from "./PreferCities";
 
-const CitySearch = ({ cityName, setCityName, totalResult }) => {
+const CitySearch = ({ cityName, setCityName, totalResult, allCities }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -40,7 +40,7 @@ const CitySearch = ({ cityName, setCityName, totalResult }) => {
           setVisible(false);
         }}
       >
-        <PreferCities />
+        <PreferCities allCities={allCities} />
       </Dialog>
     </>
   );
