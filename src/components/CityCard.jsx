@@ -1,7 +1,7 @@
 import { Toast } from "primereact/toast";
 import { useRef } from "react";
 import { Button } from "primereact/button";
-import { addToPreferences } from "../stores/citiesSlice";
+import { addToPreferences, removeToPreferences } from "../stores/citiesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const CityCard = ({ cityName, deleteCity }) => {
@@ -23,6 +23,10 @@ const CityCard = ({ cityName, deleteCity }) => {
     dispatch(addToPreferences(cityName));
   };
 
+  const removeCity = () => {
+    dispatch(removeToPreferences(cityName));
+  };
+
   const toast = useRef(null);
 
   return (
@@ -33,8 +37,16 @@ const CityCard = ({ cityName, deleteCity }) => {
         <Button label="Cancella" onClick={deleteCurrentCity} />
 
         <div>
-          {!prefCities.includes(cityName) && (
-            <Button label="Aggiungi ai preferiti" onClick={addCity}></Button>
+          {prefCities.includes(cityName) ? (
+            <Button onClick={removeCity}>
+              {" "}
+              Rimuovi
+              <i className="ml-3 pi pi-heart-fill"></i>
+            </Button>
+          ) : (
+            <Button onClick={addCity}>
+              Aggiungi <i className="ml-3 pi pi-heart"></i>
+            </Button>
           )}
         </div>
       </div>

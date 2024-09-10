@@ -13,9 +13,15 @@ export const citiesSlice = createSlice({
       state.preferCities.push(action.payload);
       sessionStorage.setItem("citiesState", JSON.stringify(state));
     },
+    removeToPreferences: (state, action) => {
+      state.preferCities = state.preferCities.filter(
+        (city) => city !== action.payload
+      );
+      sessionStorage.setItem("citiesState", JSON.stringify(state));
+    },
   },
 });
 
-export const { addToPreferences } = citiesSlice.actions;
+export const { addToPreferences, removeToPreferences } = citiesSlice.actions;
 
 export const citiesReducer = citiesSlice.reducer;
