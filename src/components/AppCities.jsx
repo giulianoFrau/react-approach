@@ -78,8 +78,10 @@ Aggiungi useEffect:
           {filteredCities.length > 0
             ? filteredCities.map((item, index) => (
                 <CityCard
+                  isPreferenceVisible={true}
                   key={index}
                   cityName={item.name.common}
+                  region={item.region}
                   deleteCity={deleteCity}
                 ></CityCard>
               ))
