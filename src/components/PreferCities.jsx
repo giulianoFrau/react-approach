@@ -29,30 +29,35 @@ const PreferCities = ({ allCities }) => {
 
   return (
     <>
-    {  Object.keys(groupedCities).length <= 0 ?<div>Non ci sono citta preferite</div>  :
-    <div className="grid grid-cols-3 gap-5">
-      {Object.keys(groupedCities)
-        .sort() // Ordina le lettere iniziali
-        .map((letter) => (
-          <div key={letter}>
-            <div className="flex flex-col gap-3 text-3xl mb-3">{letter}</div>
-            {groupedCities[letter].map((city) => (
-              <div key={city.name.common} className="flex gap-2 mb-3">
-                <div>
-                  {city.flags.png && (
-                    <img
-                      src={city.flags.png}
-                      style={{ width: 30, height: 20 }}
-                      alt={`Flag of ${city.name.common}`}
-                    />
-                  )}
+      {Object.keys(groupedCities).length <= 0 ? (
+        <div>Non ci sono citta preferite</div>
+      ) : (
+        <div className="grid grid-cols-3 gap-5">
+          {Object.keys(groupedCities)
+            .sort() // Ordina le lettere iniziali
+            .map((letter) => (
+              <div key={letter}>
+                <div className="flex flex-col gap-3 text-3xl mb-3">
+                  {letter}
                 </div>
-                <div>{city.name.common}</div>
+                {groupedCities[letter].map((city) => (
+                  <div key={city.name.common} className="flex gap-2 mb-3">
+                    <div>
+                      {city?.flags?.png && (
+                        <img
+                          src={city.flags.png}
+                          style={{ width: 30, height: 20 }}
+                          alt={`Flag of ${city.name.common}`}
+                        />
+                      )}
+                    </div>
+                    <div>{city.name.common}</div>
+                  </div>
+                ))}
               </div>
             ))}
-          </div>
-        ))}
-    </div>}
+        </div>
+      )}
     </>
   );
 };
