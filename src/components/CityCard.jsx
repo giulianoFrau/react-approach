@@ -40,7 +40,7 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region }) => {
 
         <div className={isPreferenceVisible ? "block" : "hidden"}>
           {prefCities.includes(cityName) ? (
-            <Button onClick={removeCity}>
+            <Button onClick={removeCity} className="w-full flex justify-center">
               {" "}
               Rimuovi
               <i className="ml-3 pi pi-heart-fill"></i>
