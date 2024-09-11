@@ -17,7 +17,8 @@ const CityForm = ({ addCity }) => {
   const submitForm = (e) => {
     e.preventDefault();
     const newCity = {
-      name: { common: formData.title,region:"Europe" },
+      name: { common: formData.title},
+      region:"Europe" 
     };
     addCity(newCity);
     toast.current.show({
