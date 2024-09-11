@@ -3,6 +3,7 @@ import "./App.css";
 import CardForm from "./components/CardForm";
 import { increment, decrement } from "./redux/counterSlice";
 import { useSelector, useDispatch } from "react-redux";
+import Navbar from "./components/Navbar";
 
 function App() {
   /* USESELECTOR SI USA QUANDO DALLO STORE VOGLIO PRENDERE UN VALORE, DISPATCH PER ESEGUIRE UNA ACTION */
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <>
+      <Navbar />
       <CardForm />
       <div className="card flex flex-col gap-2">
         <div>Conteggio : {count}</div>
