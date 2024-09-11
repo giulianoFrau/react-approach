@@ -28,6 +28,8 @@ const PreferCities = ({ allCities }) => {
   });
 
   return (
+    <>
+    {  Object.keys(groupedCities).length <= 0 ?<div>Non ci sono citta preferite</div>  :
     <div className="grid grid-cols-3 gap-5">
       {Object.keys(groupedCities)
         .sort() // Ordina le lettere iniziali
@@ -50,7 +52,8 @@ const PreferCities = ({ allCities }) => {
             ))}
           </div>
         ))}
-    </div>
+    </div>}
+    </>
   );
 };
 
