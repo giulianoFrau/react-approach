@@ -48,6 +48,7 @@ const CitySearch = ({
         closable={false}
         visible={visible}
         dismissableMask={true}
+        onShow={()=>setCityName("")}
         style={{ width: "50vw" }}
         onHide={() => {
           if (!visible) return;
