@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Cities } from "../api";
 
 // Action asincrona per fare la chiamata all'API
-export const fetchCities = createAsyncThunk("cities/fetchCities", async () => {
+export const fetchCities = createAsyncThunk("getAllCities", async () => {
   const response = await Cities.getCities();
   return response.data;
 });
@@ -16,18 +16,10 @@ export const allCitiesSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchCities.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchCities.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.allCities = action.payload;
-      })
-      .addCase(fetchCities.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      });
+    builder.addCase(fetchCities.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.allCities = action.payload;
+    });
   },
 });
 

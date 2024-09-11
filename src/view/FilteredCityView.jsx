@@ -9,8 +9,7 @@ function FilteredCityView() {
 
   useEffect(() => {
     dispatch(fetchCities());
-  }, []);
-
+  }, [dispatch]);
   return (
     <>
       <AppMenu />
