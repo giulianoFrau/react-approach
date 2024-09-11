@@ -3,7 +3,7 @@ function About() {
   return (
     <>
       <AppMenu />
-      <div>ciao about</div>
+      <div>View about</div>
     </>
   );
 }
