@@ -74,7 +74,7 @@ Aggiungi useEffect:
       </div>
 
       <div className="app__cities flex flex-col gap-7 mt-7">
-        <div className="app__cities__container flex flex-wrap gap-5 justify-center">
+        <div className="app__cities__container flex flex-wrap gap-5 justify-between">
           {filteredCities.length > 0
             ? filteredCities.map((item, index) => (
                 <CityCard

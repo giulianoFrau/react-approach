@@ -4,12 +4,24 @@ import { Dialog } from "primereact/dialog";
 
 import PreferCities from "./PreferCities";
 
-const CitySearch = ({ cityName, setCityName, totalResult, allCities }) => {
+const CitySearch = ({
+  cityName,
+  setCityName,
+  totalResult,
+  allCities,
+  isVisiblePreference = true,
+}) => {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <div className="flex flex-col p-3 gap-2 w-80 bg-zinc-950  flex-1 rounded-lg">
+      <div
+        className={
+          isVisiblePreference
+            ? "flex flex-col p-3 gap-2 w-80 bg-zinc-950  flex-1 rounded-lg"
+            : "flex flex-col gap-2 w-80  rounded-lg ml-auto "
+        }
+      >
         <h3>Ricerca uno stato</h3>
         <InputText
           className="border text-indigo-500 p-2"
@@ -23,10 +35,12 @@ const CitySearch = ({ cityName, setCityName, totalResult, allCities }) => {
             ? `*Risultati trovati : ${totalResult}`
             : ""}
         </small>
-        <h3>Oppure</h3>
-        <u className="cursor-pointer" onClick={() => setVisible(true)}>
-          Clicca qui per vedere i tuoi preferiti
-        </u>
+        <div className={isVisiblePreference ? "block" : "hidden"}>
+          <h3>Oppure</h3>
+          <u className="cursor-pointer" onClick={() => setVisible(true)}>
+            Clicca qui per vedere i tuoi preferiti
+          </u>
+        </div>
       </div>
       <Dialog
         header="Le tue citta preferite"

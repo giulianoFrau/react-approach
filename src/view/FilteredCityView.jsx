@@ -5,50 +5,70 @@ import { fetchCities, deleteCity } from "../stores/allCitiesSlice";
 import CityCard from "../components/CityCard.jsx";
 import { Link } from "react-router-dom";
 import FilterRadio from "../components/FilterRadio.jsx";
+import CitySearch from "../components/CitySearch.jsx";
 
 function FilteredCityView() {
   const [continentName, setContinentName] = useState("all");
+  const [cityNameToSearch, setCityNameToSearch] = useState("");
   const dispatch = useDispatch();
+
   const cities = useSelector((state) => state.allCities.allCities);
+
   useEffect(() => {
     dispatch(fetchCities());
   }, [dispatch]);
+
   function deleteCurrentCity(cityName) {
     dispatch(deleteCity(cityName));
   }
 
   const filteredCities = useMemo(() => {
-    if (continentName === "all") {
-      return cities;
-    } else {
-      return cities.filter((city) => city.region === continentName);
-    }
-  }, [cities, continentName]);
+    return cities.filter(
+      (city) =>
+        (continentName === "all" || city.region === continentName) &&
+        city.name.common.toLowerCase().includes(cityNameToSearch.toLowerCase())
+    );
+  }, [cities, continentName, cityNameToSearch]);
 
   return (
     <>
       <AppMenu />
       <div>
         <h1>List of Countries from store</h1>
-        <Link to="/">
-          {" "}
-          <u>Torna alla home </u>
-        </Link>
-        <FilterRadio
-          continentName={continentName}
-          setContinentName={setContinentName}
-        />
 
-        <div className="flex flex-wrap gap-5 justify-center mt-5">
-          {filteredCities.map((city, index) => (
-            <CityCard
-              key={index}
-              cityName={city.name.common}
-              deleteCity={deleteCurrentCity}
-              region={city.region}
-              isPreferenceVisible={false}
-            ></CityCard>
-          ))}
+        <div className="flex gap-5 flew-wrap items-center ">
+          <Link to="/">
+            {" "}
+            <u>Torna alla home </u>
+          </Link>
+          <FilterRadio
+            continentName={continentName}
+            setContinentName={setContinentName}
+          />
+
+          <CitySearch
+            cityName={cityNameToSearch}
+            setCityName={setCityNameToSearch}
+            allCities={filteredCities}
+            totalResult={filteredCities.length}
+            isVisiblePreference={false}
+          />
+        </div>
+
+        <div className="flex flex-wrap gap-5 justify-between mt-5">
+          {filteredCities.length > 0 ? (
+            filteredCities.map((city, index) => (
+              <CityCard
+                key={index}
+                cityName={city.name.common}
+                deleteCity={deleteCurrentCity}
+                region={city.region}
+                isPreferenceVisible={false}
+              ></CityCard>
+            ))
+          ) : (
+            <h1>Nessun risultato</h1>
+          )}
         </div>
       </div>
     </>
