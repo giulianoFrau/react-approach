@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import "../components/AppCities.scss";
+import "../assets/style/AppCities.scss"
 import { Cities } from "../api/index.js";
 import CityForm from "./CityForm.jsx";
 import CityCard from "./CityCard.jsx";
