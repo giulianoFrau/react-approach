@@ -3,7 +3,7 @@ const FilterRadio = ({ continentName, setContinentName }) => {
   return (
     <div className="card flex justify-content-center">
       <div className="flex flex-wrap gap-3">
-        <div className="flex align-items-center">
+        <div className="flex items-center">
           <RadioButton
             inputId="europa"
             name="Europe"
@@ -15,7 +15,7 @@ const FilterRadio = ({ continentName, setContinentName }) => {
             Europa
           </label>
         </div>
-        <div className="flex align-items-center">
+        <div className="flex items-center">
           <RadioButton
             inputId="africa"
             name="Africa"
@@ -27,7 +27,7 @@ const FilterRadio = ({ continentName, setContinentName }) => {
             Africa
           </label>
         </div>
-        <div className="flex align-items-center">
+        <div className="flex items-center">
           <RadioButton
             inputId="asia"
             name="Asia"
@@ -39,7 +39,7 @@ const FilterRadio = ({ continentName, setContinentName }) => {
             Asia
           </label>
         </div>
-        <div className="flex align-items-center">
+        <div className="flex items-center">
           <RadioButton
             inputId="america"
             name="Americas"
@@ -51,7 +51,7 @@ const FilterRadio = ({ continentName, setContinentName }) => {
             America
           </label>
         </div>
-        <div className="flex align-items-center">
+        <div className="flex items-center">
           <RadioButton
             inputId="Tutti"
             name="all"

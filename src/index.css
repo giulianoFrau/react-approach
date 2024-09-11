@@ -39,6 +39,19 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+h3,label{
+  color:red;
+  font-size: 1.2em;
+}
+
+.p-radiobutton .p-component{
+  border:1px solid peru;
+}
+
+
+u{
+  color:peru;
+}
 
 button {
   border-radius: 8px;

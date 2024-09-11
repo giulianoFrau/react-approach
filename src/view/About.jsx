@@ -1,9 +1,9 @@
 import AppMenu from "../components/AppMenu.jsx";
 function About() {
   return (
-    <>
+    <> 
       <AppMenu />
-      <div>View about</div>
+      <div>View about Work in progress</div>
     </>
   );
 }

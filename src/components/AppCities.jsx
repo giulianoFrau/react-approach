@@ -61,7 +61,8 @@ Aggiungi useEffect:
 
   return (
     <>
-      <div className="flex gap-10 flex-wrap">
+    <h1>List of Countries</h1>
+      <div className="flex gap-10 flex-wrap mt-5">
         <CitySearch
           cityName={cityName}
           setCityName={setCityName}
