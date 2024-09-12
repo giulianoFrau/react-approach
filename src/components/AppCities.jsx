@@ -44,7 +44,7 @@ const AppCites = () => {
   const allFilteredCities = filteredCities.slice(indexOfFirstCity, indexOfLastCity);
 
   const handlePageChange = (event) => {
-    setCurrentPage(event.page + 1); // `event.page` è 0-indexed
+    setCurrentPage(event.page + 1); 
   };
 
   useEffect(() => {

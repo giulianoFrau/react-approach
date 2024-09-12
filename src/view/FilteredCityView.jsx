@@ -11,8 +11,7 @@ function FilteredCityView() {
   const [continentName, setContinentName] = useState("all");
   const [cityNameToSearch, setCityNameToSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage] = useState(10); // Puoi modificare questo valore a seconda di quante città vuoi mostrare per pagina
-
+  const [rowsPerPage] = useState(10); 
   const dispatch = useDispatch();
   const cities = useSelector((state) => state.allCities.allCities);
 
@@ -37,7 +36,7 @@ function FilteredCityView() {
   const currentCities = filteredCities.slice(indexOfFirstCity, indexOfLastCity);
 
   const handlePageChange = (event) => {
-    setCurrentPage(event.page + 1); // `event.page` è 0-indexed
+    setCurrentPage(event.page + 1); 
   };
 
   return (
