@@ -1,14 +1,16 @@
 import { useEffect, useState, useMemo } from "react";
-import "../assets/style/AppCities.scss"
+import "../assets/style/AppCities.scss";
 import { Cities } from "../api/index.js";
 import CityForm from "./CityForm.jsx";
 import CityCard from "./CityCard.jsx";
 import CitySearch from "./CitySearch.jsx";
+import { Paginator } from 'primereact/paginator';
 
 const AppCites = () => {
-  const [allCities, setAllCities] = useState([]); //ref dove salvo result api città
-
-  const [cityName, setCityName] = useState(""); //ref per input
+  const [allCities, setAllCities] = useState([]);
+  const [cityName, setCityName] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage] = useState(10); 
 
   async function getCities() {
     const resp = await Cities.getCities();
@@ -24,6 +26,7 @@ const AppCites = () => {
       )
     );
   }
+
   function deleteCity(city) {
     setAllCities(
       allCities.filter((currentCity) => currentCity.name.common !== city)
@@ -36,32 +39,21 @@ const AppCites = () => {
     );
   }, [allCities, cityName]);
 
+  const indexOfLastCity = currentPage * rowsPerPage;
+  const indexOfFirstCity = indexOfLastCity - rowsPerPage;
+  const allFilteredCities = filteredCities.slice(indexOfFirstCity, indexOfLastCity);
+
+  const handlePageChange = (event) => {
+    setCurrentPage(event.page + 1); // `event.page` è 0-indexed
+  };
+
   useEffect(() => {
     getCities();
   }, []);
 
-  /*
-   ALTERNATIVA A USEMEMO DI SU.. USEMEMO EQUIVALE A COMPUTED IN VUE.
-  se volessi usare useEffect anche per vedere i cambiamenti stile watch devo fare cosi:
-
-
-Aggiungi alle variabili:
-const [filteredCities, setFilteredCities] = useState([]); //ref dove salvo i risultati filtrati
-
-Aggiungi useEffect:
-
-  useEffect(() => {
-    const filtered = allCities.filter((city) =>
-      city.name.common.toLowerCase().includes(cityName.toLowerCase())
-    );
-    setFilteredCities(filtered);
-  }, [allCities, cityName]);
-
-  */
-
   return (
     <div className="app__cities">
-    <h1>List of Countries</h1>
+      <h1>List of Countries</h1>
       <div className="flex gap-10 flex-wrap mt-5">
         <CitySearch
           cityName={cityName}
@@ -71,27 +63,33 @@ Aggiungi useEffect:
         />
         <div className="hidden md:block md:border"></div>
 
-        <CityForm addCity={addCity}></CityForm>
+        <CityForm addCity={addCity} />
       </div>
 
-      <div className=" flex flex-col mt-7 md:gap-8 ">
-  <div className={`app__cities__container flex flex-wrap   gap-5 md:gap-8  ${cityName.length === 0 ? "justify-between" : ""}`}>
-    {filteredCities.length > 0 ? (
-      filteredCities.map((item, index) => (
-        <CityCard
-          isPreferenceVisible={true}
-          key={index}
-          cityName={item.name.common}
-          region={item.region}
-          deleteCity={deleteCity}
-        />
-      ))
-    ) : (
-      <p className="text-gray-500 text-center w-full">Nessun Risultato</p>
-    )}
-  </div>
-</div>
+      <div className="flex flex-col mt-7 md:gap-8">
+        <div className={`app__cities__container flex flex-wrap gap-5 md:gap-8 ${cityName.length === 0 ? "justify-between" : ""}`}>
+          {allFilteredCities.length > 0 ? (
+            allFilteredCities.map((item, index) => (
+              <CityCard
+                isPreferenceVisible={true}
+                key={index}
+                cityName={item.name.common}
+                region={item.region}
+                deleteCity={deleteCity}
+              />
+            ))
+          ) : (
+            <p className="text-gray-500 text-center w-full">Nessun Risultato</p>
+          )}
+        </div>
 
+        <Paginator
+          first={indexOfFirstCity}
+          rows={rowsPerPage}
+          totalRecords={filteredCities.length}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };
