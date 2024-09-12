@@ -3,49 +3,49 @@
 @tailwind utilities;
 
 :root {
- 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  color: #1a1a1a; /* Colore del testo scuro per lo sfondo bianco */
-  background-color: #ffffff; 
+  color: #1a1a1a;
+  background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html,body{
+html, body {
   background-color: #f1f5f9;
   height: 100vh;
 }
 
-.p-radiobutton-box{
-  border: 1px solid #3b82f6;
+.p-radiobutton-box {
+  border: 1px solid #60A5FA;
 }
 
 a {
   font-weight: 500;
-  color: #3b82f6; /* Blu più vivido per i link */
+  color: #60A5FA;
   text-decoration: inherit;
 }
+
 a:hover {
-  color: #2563eb; /* Blu più scuro per il hover */
+  color: #60A5FA;
 }
+
 h1 {
-  font-size: 2.5rem; /* Grandezza del testo */
-  font-weight: 700; /* Grassetto */
-  color: #1f2937; /* Colore scuro per contrastare con lo sfondo bianco */
-  margin-bottom: 1rem; /* Spazio sotto l'intestazione */
-  text-align: center; /* Allineamento al centro */
-
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  text-align: center;
 }
-
 
 button:hover {
-  background-color: #2563eb; /* Hover blu più scuro */
+  background-color: #60A5FA;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -58,12 +58,9 @@ button:focus-visible {
   }
 }
 
-/* Stili personalizzati per il Paginator */
 .paginator {
   display: flex;
   justify-content: center;
-
- 
 }
 
 .paginator .p-paginator {
@@ -71,19 +68,16 @@ button:focus-visible {
   align-items: center;
   gap: 0.5rem;
   background-color: transparent;
- 
 }
 
-
-
 .paginator .p-paginator .p-paginator-page.p-highlight {
-  background-color: #3b82f6; /* Sfondo blu per il bottone selezionato */
-  color: #ffffff; /* Testo bianco */
-  border-color: #3b82f6; /* Bordo blu */
+  background-color: #60A5FA;
+  color: #ffffff;
+  border-color: #60A5FA;
 }
 
 .paginator .p-paginator .p-paginator-page:hover {
-  background-color: #f3f4f6; /* Sfondo grigio chiaro al passaggio del mouse */
+  background-color: #f3f4f6;
 }
 
 .paginator .p-paginator .p-paginator-prev,
@@ -109,6 +103,6 @@ button:focus-visible {
 .paginator .p-paginator .p-paginator-prev.p-disabled,
 .paginator .p-paginator .p-paginator-next.p-disabled {
   cursor: not-allowed;
-  color: #d1d5db; /* Colore disabilitato */
+  color: #d1d5db;
   border-color: #d1d5db;
 }
