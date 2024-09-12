@@ -82,13 +82,14 @@ const AppCites = () => {
             <p className="text-gray-500 text-center w-full">Nessun Risultato</p>
           )}
         </div>
-
+        <div className="paginator mt-auto">
         <Paginator
           first={indexOfFirstCity}
           rows={rowsPerPage}
           totalRecords={filteredCities.length}
           onPageChange={handlePageChange}
         />
+        </div>
       </div>
     </div>
   );

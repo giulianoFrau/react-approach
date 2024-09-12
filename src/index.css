@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+ 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -15,8 +16,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body{
+html,body{
   background-color: #f1f5f9;
+  height: 100vh;
 }
 
 .p-radiobutton-box{
@@ -39,18 +41,8 @@ h1 {
   text-align: center; /* Allineamento al centro */
 
 }
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #3b82f6; /* Colore di default blu */
-  color: white; /* Testo bianco */
-  cursor: pointer;
-  transition: background-color 0.25s;
-}
+
+
 button:hover {
   background-color: #2563eb; /* Hover blu più scuro */
 }
@@ -64,4 +56,59 @@ button:focus-visible {
     color: #1a1a1a;
     background-color: #ffffff;
   }
+}
+
+/* Stili personalizzati per il Paginator */
+.paginator {
+  display: flex;
+  justify-content: center;
+
+ 
+}
+
+.paginator .p-paginator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+ 
+}
+
+
+
+.paginator .p-paginator .p-paginator-page.p-highlight {
+  background-color: #3b82f6; /* Sfondo blu per il bottone selezionato */
+  color: #ffffff; /* Testo bianco */
+  border-color: #3b82f6; /* Bordo blu */
+}
+
+.paginator .p-paginator .p-paginator-page:hover {
+  background-color: #f3f4f6; /* Sfondo grigio chiaro al passaggio del mouse */
+}
+
+.paginator .p-paginator .p-paginator-prev,
+.paginator .p-paginator .p-paginator-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.paginator .p-paginator .p-paginator-prev:hover,
+.paginator .p-paginator .p-paginator-next:hover {
+  background-color: #f3f4f6;
+}
+
+.paginator .p-paginator .p-paginator-prev.p-disabled,
+.paginator .p-paginator .p-paginator-next.p-disabled {
+  cursor: not-allowed;
+  color: #d1d5db; /* Colore disabilitato */
+  border-color: #d1d5db;
 }

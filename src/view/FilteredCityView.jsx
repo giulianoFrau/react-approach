@@ -76,14 +76,16 @@ function FilteredCityView() {
             <h1>Nessun risultato</h1>
           )}
         </div>
-
-        <Paginator
+<div className="paginator mt-11">
+<Paginator
           first={indexOfFirstCity}
           rows={rowsPerPage}
           totalRecords={filteredCities.length}
           onPageChange={handlePageChange}
         />
       </div>
+</div>
+        
     </>
   );
 }
