@@ -36,7 +36,7 @@ function FilteredCityView() {
 <div className="app__filter__cities">
         <h1>List of Countries from store</h1>
 
-<div className=" flex gap-5 flew-wrap items-center ">
+<div className=" flex gap-5 flew-wrap items-center flex-col  md:flex-row ">
       
       <FilterRadio
         continentName={continentName}
@@ -52,7 +52,7 @@ function FilteredCityView() {
       />
     </div>
 
-    <div className="flex flex-wrap gap-5 justify-between mt-5">
+    <div className="flex flex-wrap gap-5 mt-5">
       {filteredCities.length > 0 ? (
         filteredCities.map((city, index) => (
           <CityCard

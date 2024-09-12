@@ -18,7 +18,7 @@ const CitySearch = ({
 <div className={
   isVisiblePreference 
   ? "flex flex-col p-4 gap-4 w-80 bg-white border border-gray-200 shadow-md flex-1 rounded-lg" 
-  : "flex flex-col gap-4 w-80  rounded-lg ml-auto"
+  : "flex flex-col gap-4 w-full md:w-80  rounded-lg md:ml-auto"
 }>
   <h3 className="text-gray-700 font-bold text-lg">Ricerca uno stato</h3>
   <InputText
