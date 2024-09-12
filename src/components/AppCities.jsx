@@ -74,21 +74,24 @@ Aggiungi useEffect:
         <CityForm addCity={addCity}></CityForm>
       </div>
 
-      <div className="app__cities flex flex-col gap-7 mt-7">
-        <div className="app__cities__container flex flex-wrap gap-5 justify-between">
-          {filteredCities.length > 0
-            ? filteredCities.map((item, index) => (
-                <CityCard
-                  isPreferenceVisible={true}
-                  key={index}
-                  cityName={item.name.common}
-                  region={item.region}
-                  deleteCity={deleteCity}
-                ></CityCard>
-              ))
-            : "Nessun Risultato"}
-        </div>
-      </div>
+      <div className="app__cities flex flex-col gap-8 mt-7">
+  <div className="app__cities__container flex flex-wrap gap-8 justify-between">
+    {filteredCities.length > 0 ? (
+      filteredCities.map((item, index) => (
+        <CityCard
+          isPreferenceVisible={true}
+          key={index}
+          cityName={item.name.common}
+          region={item.region}
+          deleteCity={deleteCity}
+        />
+      ))
+    ) : (
+      <p className="text-gray-500 text-center w-full">Nessun Risultato</p>
+    )}
+  </div>
+</div>
+
     </>
   );
 };

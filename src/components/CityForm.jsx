@@ -35,21 +35,18 @@ const CityForm = ({ addCity }) => {
   return (
     <>
       <Toast ref={toast} />
-      <form
-        onSubmit={submitForm}
-        className="flex flex-col p-3 gap-2 w-80 bg-zinc-950 flex-1 rounded-lg"
-      >
-        <label>Aggiungi uno stato</label>
-        <InputText
-          name="title"
-          className="border text-indigo-500 p-2"
-          placeholder="Inserisci il nome dello stato"
-          onChange={handleChange}
-          // ALTERNATIVA : onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          value={formData.title}
-        />
-        <Button label="Invia " />
-      </form>
+      <form onSubmit={submitForm} className="flex flex-col p-4 gap-4 w-80 bg-white border border-gray-200 shadow-md flex-1 rounded-lg">
+  <label className="text-gray-700 font-bold">Aggiungi uno stato</label>
+  <InputText
+    name="title"
+    className="border border-gray-300 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500"
+    placeholder="Inserisci il nome dello stato"
+    onChange={handleChange}
+    value={formData.title}
+  />
+  <Button label="Invia" className="bg-indigo-500 text-white hover:bg-indigo-600 rounded-md p-2" />
+</form>
+
     </>
   );
 };

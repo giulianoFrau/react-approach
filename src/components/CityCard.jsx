@@ -32,26 +32,25 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region }) => {
   return (
     <>
       <Toast ref={toast} />
-      <div className="app__cities__container-card p-3 border rounded-md flex flex-col gap-2">
-        <div className="text-center text-2xl">
-          {cityName + "(" + region + ")"}{" "}
-        </div>
-        <Button label="Cancella" onClick={deleteCurrentCity} />
+      <div className="app__cities__container-card p-4 border border-gray-200 rounded-lg shadow-md flex flex-col gap-4 bg-white">
+  <div className="text-center text-xl font-semibold text-gray-800">
+    {cityName} ({region})
+  </div>
+  <Button label="Cancella" className="bg-red-500 text-white hover:bg-red-600 rounded-md p-2" onClick={deleteCurrentCity} />
+  
+  {isPreferenceVisible && (
+    prefCities.includes(cityName) ? (
+      <Button onClick={removeCity} className="w-full flex justify-center bg-green-500 text-white hover:bg-green-600 rounded-md p-2">
+        Rimuovi <i className="ml-3 pi pi-heart-fill"></i>
+      </Button>
+    ) : (
+      <Button onClick={addCity} className="w-full flex justify-center bg-blue-500 text-white hover:bg-blue-600 rounded-md p-2">
+        Aggiungi <i className="ml-3 pi pi-heart"></i>
+      </Button>
+    )
+  )}
+</div>
 
-        <div className={isPreferenceVisible ? "block" : "hidden"}>
-          {prefCities.includes(cityName) ? (
-            <Button onClick={removeCity} className="w-full flex justify-center">
-              {" "}
-              Rimuovi
-              <i className="ml-3 pi pi-heart-fill"></i>
-            </Button>
-          ) : (
-            <Button onClick={addCity} className="w-full flex justify-center">
-              Aggiungi <i className="ml-3 pi pi-heart"></i>
-            </Button>
-          )}
-        </div>
-      </div>
     </>
   );
 };
