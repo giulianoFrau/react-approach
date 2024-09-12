@@ -10,7 +10,7 @@ const AppCites = () => {
   const [allCities, setAllCities] = useState([]);
   const [cityName, setCityName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage] = useState(10); 
+  const [rowsPerPage] = useState(12); 
 
   async function getCities() {
     const resp = await Cities.getCities();
@@ -67,7 +67,7 @@ const AppCites = () => {
       </div>
 
       <div className="flex flex-col mt-7 md:gap-8">
-        <div className={`app__cities__container flex flex-wrap gap-5 md:gap-8 ${cityName.length === 0 ? "justify-between" : ""}`}>
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 mt-5">
           {allFilteredCities.length > 0 ? (
             allFilteredCities.map((item, index) => (
               <CityCard

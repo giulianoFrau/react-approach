@@ -11,7 +11,7 @@ function FilteredCityView() {
   const [continentName, setContinentName] = useState("all");
   const [cityNameToSearch, setCityNameToSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage] = useState(10); 
+  const [rowsPerPage] = useState(12); 
   const dispatch = useDispatch();
   const cities = useSelector((state) => state.allCities.allCities);
 
@@ -60,7 +60,7 @@ function FilteredCityView() {
           />
         </div>
 
-        <div className={`flex flex-wrap gap-5 mt-5 ${cityNameToSearch.length === 0 ? "justify-between" : ""}`}>
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 mt-5">
           {currentCities.length > 0 ? (
             currentCities.map((city, index) => (
               <CityCard

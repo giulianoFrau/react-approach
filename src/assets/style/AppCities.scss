@@ -1,14 +1,9 @@
 .app__cities,.app__filter__cities {
     background-color: #f1f5f9;
     padding: 2rem;
-    &__container-card{
-        width: 17rem;
-    }
+  
 
     @media screen and (max-width: 768px) {
         padding: 1rem;
-        &__container-card{
-            width: 10rem;
-        }  
     }
     }
