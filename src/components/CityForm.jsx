@@ -17,7 +17,7 @@ const CityForm = ({ addCity }) => {
   const submitForm = (e) => {
     e.preventDefault();
     const newCity = {
-      name: { common: formData.title},
+      name: { common: formData.title.charAt(0).toUpperCase() + formData.title.slice(1) },
       region:"Europe" 
     };
     addCity(newCity);
@@ -48,9 +48,6 @@ const CityForm = ({ addCity }) => {
           // ALTERNATIVA : onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           value={formData.title}
         />
-        <small className="text-left text-red-500">
-          *Inserisci la prima lettera maiuscola
-        </small>
         <Button label="Invia " />
       </form>
     </>
