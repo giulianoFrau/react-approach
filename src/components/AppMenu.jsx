@@ -8,7 +8,7 @@ const AppMenu = () => {
   ];
 
   return (
-    <Menubar model={items} className="bg-white shadow-md p-4 rounded-lg border-b-2 border-gray-100" />
+    <Menubar model={items} className="bg-white shadow-md p-4  border-b-2 border-gray-100" />
   );
 };
 

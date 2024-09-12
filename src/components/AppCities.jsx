@@ -60,7 +60,7 @@ Aggiungi useEffect:
   */
 
   return (
-    <>
+    <div className="app__cities">
     <h1>List of Countries</h1>
       <div className="flex gap-10 flex-wrap mt-5">
         <CitySearch
@@ -74,7 +74,7 @@ Aggiungi useEffect:
         <CityForm addCity={addCity}></CityForm>
       </div>
 
-      <div className="app__cities flex flex-col gap-8 mt-7">
+      <div className=" flex flex-col gap-8 mt-7">
   <div className="app__cities__container flex flex-wrap gap-8 justify-between">
     {filteredCities.length > 0 ? (
       filteredCities.map((item, index) => (
@@ -92,7 +92,7 @@ Aggiungi useEffect:
   </div>
 </div>
 
-    </>
+    </div>
   );
 };
 
