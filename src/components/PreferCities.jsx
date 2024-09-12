@@ -32,7 +32,7 @@ const PreferCities = ({ allCities }) => {
       {Object.keys(groupedCities).length <= 0 ? (
         <div>Non ci sono citta preferite</div>
       ) : (
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-3 gap-5">
           {Object.keys(groupedCities)
             .sort() // Ordina le lettere iniziali
             .map((letter) => (
