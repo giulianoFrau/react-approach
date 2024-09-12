@@ -52,7 +52,8 @@ function FilteredCityView() {
       />
     </div>
 
-    <div className="flex flex-wrap gap-5 mt-5">
+    <div className={`flex flex-wrap gap-5 mt-5  ${cityNameToSearch.length === 0 ? "justify-between" : ""}`}>
+      
       {filteredCities.length > 0 ? (
         filteredCities.map((city, index) => (
           <CityCard
