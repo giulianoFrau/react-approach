@@ -33,44 +33,44 @@ function FilteredCityView() {
   return (
     <>
       <AppMenu />
-      <div>
+  
+<div className="app__filter__cities">
         <h1>List of Countries from store</h1>
 
-        <div className="flex gap-5 flew-wrap items-center ">
-          <Link to="/">
-            {" "}
-            <u>Torna alla home </u>
-          </Link>
-          <FilterRadio
-            continentName={continentName}
-            setContinentName={setContinentName}
-          />
+<div className=" flex gap-5 flew-wrap items-center ">
+      
+      <FilterRadio
+        continentName={continentName}
+        setContinentName={setContinentName}
+      />
 
-          <CitySearch
-            cityName={cityNameToSearch}
-            setCityName={setCityNameToSearch}
-            allCities={filteredCities}
-            totalResult={filteredCities.length}
-            isVisiblePreference={false}
-          />
-        </div>
+      <CitySearch
+        cityName={cityNameToSearch}
+        setCityName={setCityNameToSearch}
+        allCities={filteredCities}
+        totalResult={filteredCities.length}
+        isVisiblePreference={false}
+      />
+    </div>
 
-        <div className="flex flex-wrap gap-5 justify-between mt-5">
-          {filteredCities.length > 0 ? (
-            filteredCities.map((city, index) => (
-              <CityCard
-                key={index}
-                cityName={city.name.common}
-                deleteCity={deleteCurrentCity}
-                region={city.region}
-                isPreferenceVisible={false}
-              ></CityCard>
-            ))
-          ) : (
-            <h1>Nessun risultato</h1>
-          )}
-        </div>
-      </div>
+    <div className="flex flex-wrap gap-5 justify-between mt-5">
+      {filteredCities.length > 0 ? (
+        filteredCities.map((city, index) => (
+          <CityCard
+            key={index}
+            cityName={city.name.common}
+            deleteCity={deleteCurrentCity}
+            region={city.region}
+            isPreferenceVisible={false}
+          ></CityCard>
+        ))
+      ) : (
+        <h1>Nessun risultato</h1>
+      )}
+    </div>
+</div>
+       
+ 
     </>
   );
 }

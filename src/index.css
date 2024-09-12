@@ -8,12 +8,19 @@
   font-weight: 400;
   color-scheme: light dark;
   color: #1a1a1a; /* Colore del testo scuro per lo sfondo bianco */
-  background-color: #ffffff; /* Sfondo bianco */
-
+  background-color: #ffffff; 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+  background-color: #f1f5f9;
+}
+
+.p-radiobutton-box{
+  border: 1px solid #3b82f6;
 }
 
 a {

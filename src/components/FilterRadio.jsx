@@ -1,7 +1,9 @@
 import { RadioButton } from "primereact/radiobutton";
 const FilterRadio = ({ continentName, setContinentName }) => {
   return (
-    <div className="card flex justify-content-center">
+    <div className="flex flex-col py-4 gap-4">
+       <h3 className="text-gray-700 font-bold text-lg">Filtra per continente</h3>
+ <div className="card flex justify-content-center">
       <div className="flex flex-wrap gap-3">
         <div className="flex items-center">
           <RadioButton
@@ -65,6 +67,8 @@ const FilterRadio = ({ continentName, setContinentName }) => {
         </div>
       </div>
     </div>
+    </div>
+   
   );
 };
 
