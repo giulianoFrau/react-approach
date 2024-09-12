@@ -3,7 +3,6 @@ import AppMenu from "../components/AppMenu.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCities, deleteCity } from "../stores/allCitiesSlice";
 import CityCard from "../components/CityCard.jsx";
-import { Link } from "react-router-dom";
 import FilterRadio from "../components/FilterRadio.jsx";
 import CitySearch from "../components/CitySearch.jsx";
 

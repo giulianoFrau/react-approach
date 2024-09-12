@@ -74,8 +74,8 @@ Aggiungi useEffect:
         <CityForm addCity={addCity}></CityForm>
       </div>
 
-      <div className=" flex flex-col gap-8 mt-7">
-  <div className="app__cities__container flex flex-wrap gap-8 justify-between">
+      <div className=" flex flex-col mt-7 md:gap-8 ">
+  <div className="app__cities__container flex flex-wrap  justify-center gap-5 md:gap-8 md:justify-between">
     {filteredCities.length > 0 ? (
       filteredCities.map((item, index) => (
         <CityCard

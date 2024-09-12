@@ -44,7 +44,7 @@ const CityForm = ({ addCity }) => {
     onChange={handleChange}
     value={formData.title}
   />
-  <Button label="Invia" className="bg-indigo-500 text-white hover:bg-indigo-600 rounded-md p-2" />
+  <Button label="Invia" className="bg-indigo-400 text-white hover:bg-indigo-600 rounded-md p-2" />
 </form>
 
     </>

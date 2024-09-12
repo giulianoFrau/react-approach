@@ -3,4 +3,11 @@
     &__container-card{
         width: 15vw;
     }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+        &__container-card{
+            width: 10rem;
+        }  
+    }
     }
