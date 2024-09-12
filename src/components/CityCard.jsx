@@ -47,14 +47,14 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region }) => {
             (prefCities.includes(cityName) ? (
               <Button
                 onClick={removeCity}
-                className="w-full flex justify-center bg-green-400 text-white hover:bg-green-600 rounded-md p-2"
+                className="w-full flex justify-center bg-blue-400    text-white hover:bg-blue-600 rounded-md p-2"
               >
                 Rimuovi <i className="ml-3 pi pi-heart-fill"></i>
               </Button>
             ) : (
               <Button
                 onClick={addCity}
-                className="w-full flex justify-center bg-blue-400 text-white hover:bg-blue-600 rounded-md p-2"
+                className="w-full flex justify-center bg-green-400 text-white hover:bg-green-600 rounded-md p-2"
               >
                 Aggiungi <i className="ml-3 pi pi-heart"></i>
               </Button>
