@@ -1,18 +1,27 @@
-import { Link } from "react-router-dom";
-
+import { Menubar } from 'primereact/menubar';
 const AppMenu = () => {
+  const items = [
+    {
+        label: 'Home',
+        icon: 'pi pi-home',
+     url: '/',
+    },
+    {
+        label: 'About',
+        icon: 'pi pi-user',
+        url: '/about',
+    },
+  {
+    label: 'Filtra le città',
+    icon: 'pi pi-filter',
+    url: '/filtered-cities',
+  }
+  ]
   return (
-    <ul className="flex gap-10 mb-10">
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-      <li>
-        <Link to="/filtered-cities">Filtra le città</Link>
-      </li>
-    </ul>
+    <>
+    <Menubar model={items} />
+
+    </>
   );
 };
 
