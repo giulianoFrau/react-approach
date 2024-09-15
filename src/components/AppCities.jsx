@@ -74,6 +74,7 @@ const AppCites = () => {
                 isPreferenceVisible={true}
                 key={index}
                 cityName={item.name.common}
+                currentCity={item}
                 region={item.region}
                 deleteCity={deleteCity}
               />

@@ -1,12 +1,15 @@
 import { Toast } from "primereact/toast";
-import { useRef } from "react";
+import { useRef} from "react";
 import { Button } from "primereact/button";
 import { addToPreferences, removeToPreferences } from "../stores/citiesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region }) => {
+const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region, currentCity }) => {
   const prefCities = useSelector((state) => state.cities.preferCities);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+ 
 
   const deleteCurrentCity = () => {
     deleteCity(cityName);
@@ -27,6 +30,11 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region }) => {
     dispatch(removeToPreferences(cityName));
   };
 
+  const choiceCurrentCity = () => {
+    navigate(`/cities/${cityName.replace(/ /g, "-")}`, { state: { city: currentCity } });
+    
+  };
+
   const toast = useRef(null);
 
   return (
@@ -39,15 +47,16 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region }) => {
         <div className="text-center text-lg  text-gray-800"> {region}</div>
         <div className="w-full flex flex-col gap-2 mt-auto">
           <Button
-            
             className="bg-red-400 text-white hover:bg-red-600 rounded-md p-2 flex justify-center"
             onClick={deleteCurrentCity}
-          >Cancella <i className="ml-3 pi pi-trash"></i></Button>
+          >
+            Cancella <i className="ml-3 pi pi-trash"></i>
+          </Button>
           {isPreferenceVisible &&
             (prefCities.includes(cityName) ? (
               <Button
                 onClick={removeCity}
-                className="w-full flex justify-center bg-blue-400    text-white hover:bg-blue-600 rounded-md p-2"
+                className="w-full flex justify-center bg-blue-400 text-white hover:bg-blue-600 rounded-md p-2"
               >
                 Rimuovi <i className="ml-3 pi pi-heart-fill"></i>
               </Button>
@@ -59,6 +68,14 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region }) => {
                 Aggiungi <i className="ml-3 pi pi-heart"></i>
               </Button>
             ))}
+          {isPreferenceVisible && (
+            <Button
+              onClick={choiceCurrentCity}
+              className="w-full flex justify-center bg-blue-400 text-white hover:bg-blue-600 rounded-md p-2"
+            >
+              Dettagli <i className="ml-3 pi pi-eye"></i>
+            </Button>
+          )}
         </div>
       </div>
     </>
