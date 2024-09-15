@@ -17,7 +17,7 @@
 
 html, body {
   background-color: #f1f5f9;
-  height: 100vh;
+  height: 110vh;
 }
 
 .p-radiobutton-box {
@@ -106,3 +106,5 @@ button:focus-visible {
   color: #d1d5db;
   border-color: #d1d5db;
 }
+
+

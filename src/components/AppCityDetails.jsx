@@ -6,7 +6,7 @@ const AppCityDetails = () => {
   const location = useLocation();
   const { city } = location.state || {};
   return (
-    <div className="app__details sm:w-1/2 m-auto my-10 p-6 bg-white border border-gray-200 shadow-lg rounded-lg text-center text-xl ">
+    <div className="app__details w-11/12 sm:w-1/2 m-auto my-10 p-6 bg-white border border-gray-200 shadow-lg rounded-lg text-center text-xl ">
       <div className="text-3xl font-semibold text-gray-800 mb-2"> {city.name.common}</div>
       {city.flags? 
       <div className="flex flex-col justify-center gap-2 mb-5 items-center">
