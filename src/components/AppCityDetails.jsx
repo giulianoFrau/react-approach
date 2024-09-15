@@ -17,7 +17,7 @@ const AppCityDetails = () => {
           <div><b>Popolazione:</b> {city.population}</div>
           <div><b>Regione Appartenenza:</b> {city.subregion}</div>
           <div><b>Stato indipendente:</b> {city.independent==true?'Si':'No'}</div>
-          <div><b>Lato guida</b> {city.car.side=='left'?'Sinistro':'Destro'}</div>
+          <div><b>Lato guida:</b> {city.car.side=='left'?'Sinistro':'Destro'}</div>
       </div>:<div className="mb-5">Nessuna informazione disponibile per lo stato {city.name.common}</div>}
       <Link className="underline rounded-md p-2 " to="/">
       Torna alla home
