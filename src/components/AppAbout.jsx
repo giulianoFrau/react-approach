@@ -2,7 +2,7 @@ import { Avatar } from "primereact/avatar";
 import AppProject from "./AppProject";
 const AppAbout = () => {
   return (
-    <div className="py-6 ">
+    <div className="app__about py-6 ">
       <div className="w-11/12 m-auto my-10 p-6 bg-white border border-gray-200 shadow-lg rounded-lg ">
         <div className="text-center mb-6">
           <Avatar
