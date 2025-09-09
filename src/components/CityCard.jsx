@@ -1,15 +1,20 @@
 import { Toast } from "primereact/toast";
-import { useRef} from "react";
+import { useRef } from "react";
 import { Button } from "primereact/button";
 import { addToPreferences, removeToPreferences } from "../stores/citiesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region, currentCity }) => {
+const CityCard = ({
+  cityName,
+  deleteCity,
+  isPreferenceVisible,
+  region,
+  currentCity,
+}) => {
   const prefCities = useSelector((state) => state.cities.preferCities);
   const dispatch = useDispatch();
   const navigate = useNavigate();
- 
 
   const deleteCurrentCity = () => {
     deleteCity(cityName);
@@ -31,8 +36,9 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region, currentCi
   };
 
   const choiceCurrentCity = () => {
-    navigate(`/cities/${cityName.replace(/ /g, "-")}`, { state: { city: currentCity } });
-    
+    navigate(`/cities/${cityName.replace(/ /g, "-")}`, {
+      state: { city: currentCity },
+    });
   };
 
   const toast = useRef(null);
@@ -42,7 +48,7 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region, currentCi
       <Toast ref={toast} />
       <div className="app__cities__container-card p-2 border border-gray-200 rounded-lg shadow-md flex flex-col gap-2 bg-white md:p-4">
         <div className="text-center text-xl font-semibold text-gray-800 ">
-          {cityName} 
+          {cityName}
         </div>
         <div className="text-center text-lg  text-gray-800"> {region}</div>
         <div className="w-full flex flex-col gap-2 mt-auto">
@@ -56,7 +62,7 @@ const CityCard = ({ cityName, deleteCity, isPreferenceVisible, region, currentCi
             (prefCities.includes(cityName) ? (
               <Button
                 onClick={removeCity}
-                className="w-full flex justify-center bg-blue-400 text-white hover:bg-blue-600 rounded-md p-2"
+                className="w-full flex justify-center bg-yellow-400 text-white hover:bg-yellow-500 rounded-md p-2"
               >
                 Rimuovi <i className="ml-3 pi pi-heart-fill"></i>
               </Button>
